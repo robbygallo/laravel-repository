@@ -816,4 +816,23 @@ abstract class AbstractRepository implements RepositoryContract
 
         throw new BadMethodCallException("Call to undefined method {$className}::{$method}()");
     }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function with(array $relations)
+    {
+        $this->with[] = $relations;
+        return $this;
+    }
+    
+    /**
+     * Return relations array.
+     *
+     * @return array
+     */
+    public function getWith()
+    {
+        return $this->with;
+    }
 }
